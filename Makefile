@@ -14,9 +14,15 @@ CC += -m32 -no-pie -fno-pie
 
 LDLIBS = -lm
 
-.PHONY: all
+.PHONY: all clear
 
 all: integral
 
-integral: integral.c
+integral: integral.o
 	$(CC) $(CFLAGS) -o $@ $< $(LDLIBS)
+
+integral.o: integral.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
+
+clear:
+	rm -rf integral *.o
