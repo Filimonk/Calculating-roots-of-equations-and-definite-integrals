@@ -16,13 +16,14 @@ LDLIBS = -lm
 
 .PHONY: all clear
 
-all: integral
+all: area
 
-integral: integral.o f1.o f2.o f3.o
+area: area.o f1.o f2.o f3.o df1.o df2.o df3.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
 
-integral.o: integral.c
+area.o: area.c
 	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
+
 
 NASM = nasm -f elf
 
@@ -34,6 +35,17 @@ f2.o: f2.asm
 
 f3.o: f3.asm
 	$(NASM) $< -o $@
+
+
+df1.o: df1.asm
+	$(NASM) $< -o $@
+
+df2.o: df2.asm
+	$(NASM) $< -o $@
+
+df3.o: df3.asm
+	$(NASM) $< -o $@
+
 
 
 clear:

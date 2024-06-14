@@ -1,5 +1,6 @@
 section .data
 degree: dd 3.0
+
 term1: dd -2.0
 term2: dd -1.0
 
