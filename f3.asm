@@ -8,6 +8,6 @@ f3:
     finit
     fld dword [divider]
     fld dword [esp + 4]
-    fdivp st1, st0
+    fdivp ;st1, st0
 
     ret

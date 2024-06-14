@@ -5,7 +5,7 @@ extern float f2(float x);
 extern float f3(float x);
 
 int main(int argc, char* argv[]) {
-    printf("%f %f %f\n", f1(2), f2(2), f3(2));
+    printf("%f %f %f\n", f1(1.5), f2(1.5), f3(1.5));
    
     return 0;
 }

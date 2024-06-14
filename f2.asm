@@ -10,12 +10,15 @@ f2:
     finit
     fld dword [esp + 4]
     fld dword [term1]
-    faddp st1, st0
+    faddp ;st1, st0
     
-    fld dword [degree]
-;    fpowp st1, st0
+    ; возведем в степень 3 регистр st0
+    fld st0
+    fld st0
+    fmulp ;st1, st0
+    fmulp ;st1, st0
     
     fld dword [term2]
-    faddp st1, st0
+    faddp ;st1, st0
 
     ret
