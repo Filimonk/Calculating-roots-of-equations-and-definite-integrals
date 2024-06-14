@@ -18,15 +18,21 @@ LDLIBS = -lm
 
 all: integral
 
-integral: integral.o one.o
-	$(CC) $(CFLAGS) -o $@ integral.o one.o $(LDLIBS)
+integral: integral.o f1.o f2.o f3.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
 
 integral.o: integral.c
 	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
 
 NASM = nasm -f elf
 
-one.o: one.asm
+f1.o: f1.asm
+	$(NASM) $< -o $@
+
+f2.o: f2.asm
+	$(NASM) $< -o $@
+
+f3.o: f3.asm
 	$(NASM) $< -o $@
 
 
