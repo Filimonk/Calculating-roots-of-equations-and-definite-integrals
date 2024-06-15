@@ -40,5 +40,12 @@ df.o: df.asm
 	$(NASM) $< -o $@
 
 
+test: test.o root.c integral.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
+
+test.o: test.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
+
+
 clear:
 	rm -rf area root integral *.o
