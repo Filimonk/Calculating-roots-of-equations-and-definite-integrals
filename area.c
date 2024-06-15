@@ -17,6 +17,9 @@ float root(float (*f) (float), float (*g) (float),
 int main(int argc, char* argv[]) {
     printf("%f %f %f\n", f1(1.5), f2(1.5), f3(1.5));
     printf("%f %f %f\n", df1(1.5), df2(1.5), df3(1.5));
+    
+    float a = root(f1, f2, 0, 0, 0, df1, df2);
+    printf("%f\n", a);
    
     return 0;
 }

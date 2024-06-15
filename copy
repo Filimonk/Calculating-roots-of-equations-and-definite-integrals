@@ -18,7 +18,7 @@ LDLIBS = -lm
 
 all: area
 
-area: area.o f.o df.o root.o
+area: area.o f1.o f2.o f3.o df1.o df2.o df3.o root.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
 
 area.o: area.c
@@ -30,11 +30,25 @@ root.o: root.c
 
 NASM = nasm -f elf
 
-f.o: f.asm
+f1.o: f1.asm
 	$(NASM) $< -o $@
 
-df.o: df.asm
+f2.o: f2.asm
 	$(NASM) $< -o $@
+
+f3.o: f3.asm
+	$(NASM) $< -o $@
+
+
+df1.o: df1.asm
+	$(NASM) $< -o $@
+
+df2.o: df2.asm
+	$(NASM) $< -o $@
+
+df3.o: df3.asm
+	$(NASM) $< -o $@
+
 
 
 clear:
