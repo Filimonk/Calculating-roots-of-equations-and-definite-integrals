@@ -13,17 +13,17 @@ float float_abs(float x);
 
 /*==================*/
 
-float (*global_f) (float);
+float (*global_f) (float);  // в global_ функции мы копируем ф-ии, которые передали в root
 float (*global_g) (float);
 
-float F(float x) {
+float F(float x) {      // F(x) = f(x) - g(x), где f и g из root
     return global_f(x) - global_g(x);
 }
 
-float (*global_df) (float);
+float (*global_df) (float); // в global_ функции мы копируем ф-ии, которые передали в root
 float (*global_dg) (float);
 
-float dF(float x) {
+float dF(float x) {     // dF(x) = d(f(x) - g(x)), где f и g из root
     return global_df(x) - global_dg(x);
 }
 
