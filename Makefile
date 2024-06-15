@@ -18,13 +18,16 @@ LDLIBS = -lm
 
 all: area
 
-area: area.o f.o df.o root.o
+area: area.o f.o df.o root.o integral.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
 
 area.o: area.c
 	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
 
 root.o: root.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
+
+integral.o: integral.c
 	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
 
 
