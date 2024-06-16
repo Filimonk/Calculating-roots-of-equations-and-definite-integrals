@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 /* Объявления ф-ций */
 
@@ -13,7 +14,7 @@ float df3(float x);
 
 float root(float (*f) (float), float (*g) (float), 
            float a, float b, float eps1,
-           float (*df) (float), float (*dg) (float));
+           float (*df) (float), float (*dg) (float), bool iteration_Flag);
 
 double integral(float (*f) (float), float a, float b, float eps2);
 
@@ -48,13 +49,13 @@ float df3(float x) {
 int main(int argc, char* argv[]) {
     printf("tests root:\n");
 
-    float x1 = root(f1, f2, 2.5, 3.5, 0.01, df1, df2);
+    float x1 = root(f1, f2, 2.5, 3.5, 0.01, df1, df2, false);
     printf("x = x^2 - 2, eps = 0.01, x0 = %.2f\n", x1);
     
-    float x2 = root(f1, f3, -4, -3, 0.0001, df1, df3);
+    float x2 = root(f1, f3, -4, -3, 0.0001, df1, df3, false);
     printf("x = 1 / (x + 3), eps = 0.0001, x0 = %.4f\n", x2);
     
-    float x3 = root(f2, f3, 1, 2, 0.001, df2, df3);
+    float x3 = root(f2, f3, 1, 2, 0.001, df2, df3, false);
     printf("x^2 - 2 = 1 / (x + 3), eps = 0.001, x0 = %.3f\n", x3);
     
     

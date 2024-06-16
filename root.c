@@ -1,9 +1,10 @@
+#include <stdbool.h>
 
 /* Объявления ф-ций */
 
 float root(float (*f) (float), float (*g) (float), 
            float a, float b, float eps1,
-           float (*df) (float), float (*dg) (float));
+           float (*df) (float), float (*dg) (float), bool iteration_Flag);
 
 float F(float x);
 
@@ -37,7 +38,7 @@ float float_abs(float x) {
 
 float root(float (*f) (float), float (*g) (float), 
            float a, float b, float eps1,
-           float (*df) (float), float (*dg) (float)) {
+           float (*df) (float), float (*dg) (float), bool iteration_Flag) {
 
     global_f = f;
     global_g = g;
@@ -45,9 +46,15 @@ float root(float (*f) (float), float (*g) (float),
     global_df = df;
     global_dg = dg;
 
+    float iterations = 0;
     float c = (a + b) / 2;
     while (F(c) * F(c + eps1) > 0 && F(c - eps1) * F(c) > 0) {
         c = c - F(c) / dF(c);
+        iterations += 1;
+    }
+    
+    if (iteration_Flag) {
+        return iterations;
     }
     
     return c;
