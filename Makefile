@@ -48,4 +48,4 @@ test.o: test.c
 
 
 clear:
-	rm -rf area root integral *.o
+	rm -rf area root integral test *.o
