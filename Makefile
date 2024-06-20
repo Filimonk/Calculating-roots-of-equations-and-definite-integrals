@@ -21,29 +21,29 @@ all: area
 area: area.o f.o df.o root.o integral.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
 
-area.o: area.c
+area.o: src/area.c
 	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
 
-root.o: root.c
+root.o: src/root.c
 	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
 
-integral.o: integral.c
+integral.o: src/integral.c
 	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
 
 
 NASM = nasm -f elf
 
-f.o: f.asm
+f.o: src/f.asm
 	$(NASM) $< -o $@
 
-df.o: df.asm
+df.o: src/df.asm
 	$(NASM) $< -o $@
 
 
-test: test.o root.c integral.o
+test: test.o root.o integral.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
 
-test.o: test.c
+test.o: tests/test.c
 	$(CC) $(CFLAGS) -c -o $@ $< $(LDLIBS)
 
 
